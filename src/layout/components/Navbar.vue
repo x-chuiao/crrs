@@ -3,13 +3,15 @@
     <hamburger :is-active="sidebar.opened" class="hamburger-container" @toggleClick="toggleSideBar" />
 
     <breadcrumb class="breadcrumb-container" />
-
     <div class="right-menu">
       <el-dropdown class="avatar-container" trigger="click">
         <div class="avatar-wrapper">
           <img :src="avatar+'?imageView2/1/w/80/h/80'" class="user-avatar">
+          <!--        添加账户名-->
+          <span class="navbar-username">{{ name }}</span>
           <i class="el-icon-caret-bottom" />
         </div>
+
         <el-dropdown-menu slot="dropdown" class="user-dropdown">
           <router-link to="/">
             <el-dropdown-item>
@@ -28,6 +30,22 @@
         </el-dropdown-menu>
       </el-dropdown>
     </div>
+    <div class="navbar-tip">
+      <div class="navbar-tip-wrapper">
+        <svg-icon icon-class="search" class-name="navbar-tip-svg-icon" />
+      </div>
+      <div class="navbar-tip-wrapper" @click="gotoMsgCenter">
+        <el-badge type="primary" value="12">
+          <svg-icon icon-class="email" class-name="navbar-tip-svg-icon" />
+        </el-badge>
+      </div>
+    </div>
+    <!--    <el-drawer-->
+    <!--      title="我是标题"-->
+    <!--      :visible.sync="showMsgDrawer"-->
+    <!--    >-->
+    <!--      <span>我来啦!</span>-->
+    <!--    </el-drawer>-->
   </div>
 </template>
 
@@ -41,10 +59,16 @@ export default {
     Breadcrumb,
     Hamburger
   },
+  data() {
+    return {
+
+    }
+  },
   computed: {
     ...mapGetters([
       'sidebar',
-      'avatar'
+      'avatar',
+      'name'
     ])
   },
   methods: {
@@ -54,12 +78,20 @@ export default {
     async logout() {
       await this.$store.dispatch('user/logout')
       this.$router.push(`/login?redirect=${this.$route.fullPath}`)
+    },
+    gotoMsgCenter() {
+      this.$router.push({ name: 'message' })
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
+.navbar-username{
+  position: relative;
+  bottom: 10px;
+  margin: 10px;
+}
 .navbar {
   height: 50px;
   overflow: hidden;
@@ -135,5 +167,20 @@ export default {
       }
     }
   }
+}
+.navbar-tip{
+  float: right;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 50px;
+  .navbar-tip-wrapper{
+    padding: 5px 10px;
+  }
+}
+.navbar-tip-svg-icon{
+  height: 25px !important;
+  width: 25px !important;
 }
 </style>

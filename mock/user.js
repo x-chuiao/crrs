@@ -1,3 +1,4 @@
+const Mock = require('mockjs')
 
 const tokens = {
   admin: {
@@ -23,10 +24,20 @@ const users = {
   }
 }
 
+const data = Mock.mock({
+  'items|10': [{
+    'username': '@word',
+    'realname': '@first',
+    'tel': 'natural',
+    'email': '@email',
+    'intro': '@word(5,10)'
+  }]
+})
+
 module.exports = [
   // user login
   {
-    url: '/vue-admin-template/user/login',
+    url: '/user/login',
     type: 'post',
     response: config => {
       const { username } = config.body
@@ -49,7 +60,7 @@ module.exports = [
 
   // get user info
   {
-    url: '/vue-admin-template/user/info\.*',
+    url: '/user/info\.*',
     type: 'get',
     response: config => {
       const { token } = config.query
@@ -72,12 +83,23 @@ module.exports = [
 
   // user logout
   {
-    url: '/vue-admin-template/user/logout',
+    url: '/user/logout',
     type: 'post',
     response: _ => {
       return {
         code: 20000,
         data: 'success'
+      }
+    }
+  },
+  {
+    url: '/user/list',
+    type: 'get',
+    response: config => {
+      const items = data.items
+      return {
+        code: 20000,
+        data: items
       }
     }
   }
