@@ -11,18 +11,21 @@
       </el-form-item>
       <el-form-item label="展示图片" label-width="100px">
         <el-upload
-          action="https://jsonplaceholder.typicode.com/posts/"
+          ref="pics"
+          action="/upload"
           list-type="picture-card"
+          :auto-upload="false"
+          :file-list="fileList"
         >
           <i class="el-icon-plus" />
         </el-upload>
       </el-form-item>
       <el-form-item label="源文件" label-width="100px">
         <el-upload
-          ref="upload"
+          ref="mainFile"
           class="upload-demo"
-          action="https://jsonplaceholder.typicode.com/posts/"
-          :file-list="fileList"
+          action="/upload"
+          :file-list="picList"
           :auto-upload="false"
         >
           <el-button slot="trigger" size="small" type="primary">选取文件</el-button>
@@ -30,9 +33,9 @@
       </el-form-item>
       <el-form-item label="辅助材料" label-width="100px">
         <el-upload
-          ref="upload"
+          ref="supplyFile"
           class="upload-demo"
-          action="https://jsonplaceholder.typicode.com/posts/"
+          action="/upload"
           :file-list="fileList"
           :auto-upload="false"
         >
@@ -57,7 +60,7 @@
 
       <el-form-item style="float: right">
         <el-button type="danger">重置</el-button>
-        <el-button type="primary">立即登记</el-button>
+        <el-button type="primary" @click="register">立即登记</el-button>
       </el-form-item>
     </el-form>
   </el-card>
@@ -72,11 +75,17 @@ export default {
   components: { XTable, XSelect },
   data() {
     return {
-      fileList: []
+      fileList: [],
+      picList: []
     }
   },
   methods: {
-
+    register() {
+      this.$refs.pics.submit()
+      this.$refs.mainFile.submit()
+      this.$refs.supplyFile.submit()
+      console.log(this.picList)
+    }
   }
 }
 </script>

@@ -1,14 +1,24 @@
 <template>
   <el-card class="app-container">
     <x-table
+      border
       :headers="{
         'title':'主题',
+        'description':'介绍',
         'mainFile':'源文件',
         'supplyFile':'辅助材料',
-        'description':'介绍',
         'author':'作者',
       }"
-    />
+      url="/works/list"
+      :min-width="{
+        description:'200px'
+      }"
+      :operable="true"
+    >
+      <template v-slot:operate>
+        <el-button type="primary">生成证书</el-button>
+      </template>
+    </x-table>
   </el-card>
 </template>
 

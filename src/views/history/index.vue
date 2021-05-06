@@ -2,9 +2,17 @@
   <el-card class="app-container">
     <x-table
       :headers="{
-        'title':'标题'
+        'title':'主题',
+        'description':'介绍',
+        'author':'作者',
       }"
-    />
+      operable
+      url="/works/list"
+    >
+      <template v-slot:operate>
+        <el-button>再次申请</el-button>
+      </template>
+    </x-table>
   </el-card>
 </template>
 

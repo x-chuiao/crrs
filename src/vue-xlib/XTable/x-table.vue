@@ -87,6 +87,7 @@
           <slot :name="key" v-bind="scope" />
         </template>
       </x-table-column>
+      <!--      默认插槽-->
       <slot />
       <!-- 尾列,默认为操作列,默认为移除操作-->
       <slot name="colTail">
