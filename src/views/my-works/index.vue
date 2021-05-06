@@ -15,6 +15,9 @@
       }"
       :operable="true"
     >
+      <template v-slot:author="{row}">
+        <el-tag type="primary">{{ row.author }}</el-tag>
+      </template>
       <template v-slot:operate>
         <el-button type="primary">生成证书</el-button>
       </template>
