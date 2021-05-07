@@ -15,4 +15,3 @@ tests/**/coverage/
 *.njsproj
 *.sln
 
-test-merge
