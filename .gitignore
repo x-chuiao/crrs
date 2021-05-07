@@ -15,4 +15,4 @@ tests/**/coverage/
 *.njsproj
 *.sln
 
-#testSkip.js
+testSkip.js
