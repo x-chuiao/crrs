@@ -16,4 +16,4 @@ tests/**/coverage/
 *.sln
 
 #testSkip.js
-23333
+test sync
