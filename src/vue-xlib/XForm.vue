@@ -11,7 +11,7 @@
     >
       <template v-slot="scope">
         <slot :name="key" v-bind="scope">
-          <el-input v-model="value[key]" />
+          <el-input v-model="value[key]" :type="itemType[key]" :class="itemClass[key]" />
         </slot>
       </template>
     </el-form-item>
@@ -33,6 +33,14 @@ export default {
     editable: {
       type: Boolean,
       default: false
+    },
+    itemClass: {
+      type: String,
+      default: ''
+    },
+    itemType: {
+      type: String,
+      default: ''
     }
   },
   methods: {
@@ -48,6 +56,6 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 
 </style>

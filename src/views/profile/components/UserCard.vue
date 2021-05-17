@@ -10,6 +10,17 @@
           <div>Hello</div>
           {{ user.role }}
         </pan-thumb>
+        <span>
+          <el-upload
+            class="avatar-uploader"
+            action="https://jsonplaceholder.typicode.com/posts/"
+            :show-file-list="false"
+          >
+            <span>
+              点击更换头像
+            </span>
+          </el-upload>
+        </span>
       </div>
       <div class="box-center">
         <div class="user-name text-center">{{ user.name }}</div>
@@ -20,7 +31,7 @@
     <div class="user-bio">
       <div class="user-skills user-bio-section">
         <div class="user-bio-section-header">
-          <svg-icon icon-class="skill"/>
+          <svg-icon icon-class="skill" />
           <span>个人信息</span></div>
         <div class="user-bio-section-body">
           <div class="profile-item">
@@ -39,7 +50,7 @@
       </div>
       <div class="user-education user-bio-section">
         <div class="user-bio-section-header">
-          <svg-icon icon-class="education"/>
+          <svg-icon icon-class="education" />
           <span>简介</span></div>
         <div class="user-bio-section-body">
           <div class="text-muted">
@@ -72,6 +83,25 @@ export default {
   }
 }
 </script>
+
+<style>
+.avatar-uploader{
+  font-size: 10px;
+  text-align: center;
+  color: #999999
+}
+.avatar-uploader .el-upload {
+  border: 1px dashed #d9d9d9;
+  border-radius: 6px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+
+}
+.avatar-uploader .el-upload:hover {
+  border-color: #409EFF;
+}
+</style>
 
 <style lang="scss" scoped>
 .box-center {

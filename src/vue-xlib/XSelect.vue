@@ -1,6 +1,6 @@
 <template>
   <el-select
-    :value="value&&value.toString()||value"
+    v-model="value"
     v-bind="$attrs"
     v-on="$listeners"
     @change="$emit('change', $event)"

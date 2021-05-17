@@ -32,13 +32,12 @@
 import { mapGetters } from 'vuex'
 import UserCard from './components/UserCard'
 import Activity from './components/Activity'
-import Timeline from './components/Timeline'
 import Account from './components/Account'
 import Security from '@/views/account/security'
 
 export default {
   name: 'Profile',
-  components: { Security, UserCard, Activity, Timeline, Account },
+  components: { Security, UserCard, Activity, Account },
   data() {
     return {
       user: {},
@@ -69,6 +68,6 @@ export default {
 </script>
 <style scoped>
 .profile-card {
-  min-height: 750px;
+  min-height: 1250px;
 }
 </style>

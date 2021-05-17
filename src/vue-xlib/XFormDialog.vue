@@ -33,7 +33,7 @@ export default {
     prop: 'model',
     event: 'confirm'
   },
-  props: ['form', 'formConf'],
+  props: ['form', 'formConf', 'visible'],
   data() {
     return {
       addDialogVisible: false

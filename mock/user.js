@@ -26,11 +26,12 @@ const users = {
 
 const data = Mock.mock({
   'items|10': [{
-    'username': '@word',
-    'realname': '@first',
-    'tel': 'natural',
-    'email': '@email',
-    'intro': '@word(5,10)'
+    username: '@word',
+    realname: '@first',
+    tel: 'natural',
+    email: '@email',
+    intro: '@word(5,10)',
+    isValid: true
   }]
 })
 

@@ -1,13 +1,14 @@
 <template>
   <el-card class="app-container">
-    <el-form label-position="left">
+    <el-form v-model="form" label-position="left">
       <el-form-item label="作品类型" label-width="100px">
         <x-select
+          :value="form.worksType"
           :options="['文学','软件','音乐']"
         />
       </el-form-item>
       <el-form-item label="主题" label-width="100px">
-        <el-input style="width: 50%" />
+        <el-input v-model="form.title" style="width: 50%" />
       </el-form-item>
       <el-form-item label="展示图片" label-width="100px">
         <el-upload
@@ -45,17 +46,19 @@
       <el-form-item label="创作人" label-width="100px">
         <x-table
           :headers="{
+            username:'账号',
             authorName:'作者姓名',
             authorTel:'联系方式'
           }"
+          :data-source="authors"
           :add-form-on="true"
           :del-clicked="true"
-          style="width: 50%"
+          style="width: 61.8%"
         />
       </el-form-item>
 
       <el-form-item label="介绍" label-width="100px">
-        <el-input type="textarea" />
+        <el-input v-model="form.description" type="textarea" />
       </el-form-item>
 
       <el-form-item style="float: right">
@@ -75,8 +78,14 @@ export default {
   components: { XTable, XSelect },
   data() {
     return {
+      form: {
+        worksType: '',
+        title: '',
+        description: ''
+      },
       fileList: [],
-      picList: []
+      picList: [],
+      authors: [this.$store.state.user]
     }
   },
   methods: {

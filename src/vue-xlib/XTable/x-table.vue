@@ -81,6 +81,7 @@
         :prop="key"
         :min-width="parseMinWidth(key)"
         :editable="parseEditable(key)"
+        :align="align[key]"
       >
         <!--提供直接对cell内容的模板的插槽 -->
         <template #default="scope">
@@ -93,7 +94,7 @@
       <slot name="colTail">
         <x-table-column
           v-if="operable || delClicked"
-          align="center"
+          :align="'center'"
           label="操作"
           :min-width="parseMinWidth('operate')"
         >
@@ -149,6 +150,10 @@ export default {
       default: () => false
     },
     minWidth: {
+      type: Object,
+      default: () => ({})
+    },
+    align: {
       type: Object,
       default: () => ({})
     },

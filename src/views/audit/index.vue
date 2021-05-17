@@ -14,8 +14,13 @@
       }"
       url="/works/list"
     >
+      <template v-slot:author="{row}">
+        <Authors :row="row" />
+      </template>
+
       <x-table-column
         width="50px"
+        label="文件"
       >
         <template>
           <el-link type="primary">下载</el-link>
@@ -33,9 +38,10 @@
 <script>
 import XTable from '@/vue-xlib/XTable/x-table'
 import XTableColumn from '@/vue-xlib/XTable/x-table-column'
+import Authors from '@/views/component/Authors'
 export default {
   name: 'Audit',
-  components: { XTableColumn, XTable }
+  components: { Authors, XTableColumn, XTable }
 }
 </script>
 

@@ -1,7 +1,6 @@
 <template>
   <el-card class="app-container">
     <x-table
-      border
       :headers="{
         'title':'主题',
         'description':'介绍',
@@ -16,7 +15,7 @@
       :operable="true"
     >
       <template v-slot:author="{row}">
-        <el-tag type="primary">{{ row.author }}</el-tag>
+        <Authors :row="row" />
       </template>
       <template v-slot:operate>
         <el-button type="primary">生成证书</el-button>
@@ -27,9 +26,16 @@
 
 <script>
 import XTable from '@/vue-xlib/XTable/x-table'
+import Authors from '@/views/component/Authors'
+
 export default {
   name: 'MyWorks',
-  components: { XTable }
+  components: { Authors, XTable },
+  methods: {
+    handleAuthorClick(row) {
+
+    }
+  }
 }
 </script>
 
